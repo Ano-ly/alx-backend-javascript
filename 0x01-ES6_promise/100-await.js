@@ -1,6 +1,11 @@
-export default function signUpUser(firstName, lastName) {
-  return Promise.resolve({
-    firstName,
-    lastName,
-  });
+import { uploadPhoto, createUser } from './utils';
+
+export default async function asyncUploadUser() {
+  const photo = await uploadPhoto();
+  const user = await createUser();
+  const myObj = {
+    photo,
+    user,
+  };
+  return (myObj);
 }
