@@ -1,26 +1,12 @@
-export default class Currency {
-  constructor(code, name) {
-    this.name = name;
-    this.code = code;
+import Car from './10-car';
+
+export default class EVCar extends Car {
+  constructor(brand, motor, color, range) {
+    super(brand, motor, color);
+    this._range = range;
   }
 
-  set name(name) {
-    this._name = name;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  set code(code) {
-    this._code = code;
-  }
-
-  get code() {
-    return this._code;
-  }
-
-  displayFullCurrency() {
-    return `${this.name} (${this.code})`;
+  static get [Symbol.species]() {
+    return Car;
   }
 }
