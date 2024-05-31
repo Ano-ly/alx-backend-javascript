@@ -1,26 +1,16 @@
-export default class Currency {
-  constructor(code, name) {
-    this.name = name;
-    this.code = code;
+export default class Car {
+  constructor(brand, motor, color) {
+    this._brand = brand;
+    this._motor = motor;
+    this._color = color;
   }
 
-  set name(name) {
-    this._name = name;
+  static get [Symbol.species]() {
+    return this;
   }
 
-  get name() {
-    return this._name;
-  }
-
-  set code(code) {
-    this._code = code;
-  }
-
-  get code() {
-    return this._code;
-  }
-
-  displayFullCurrency() {
-    return `${this.name} (${this.code})`;
+  cloneCar() {
+    const NewCar = this.constructor[Symbol.species];
+    return new NewCar(this._brand, this._motor, this._color); 
   }
 }
