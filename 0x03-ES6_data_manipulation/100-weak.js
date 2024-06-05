@@ -1,20 +1,5 @@
-export default function getListStudents() {
-  const myArray = [
-    {
-      id: 1,
-      firstName: 'Guillaume',
-      location: 'San Francisco',
-    },
-    {
-      id: 2,
-      firstName: 'James',
-      location: 'Columbia',
-    },
-    {
-      id: 5,
-      firstName: 'Serena',
-      location: 'San Francisco',
-    },
-  ];
-  return myArray;
+let endpoint = 0;
+export const weakMap = new WeakMap();
+export function queryAPI(myObj) {
+  weakMap.set(endpoint, ++endpoint); 
 }

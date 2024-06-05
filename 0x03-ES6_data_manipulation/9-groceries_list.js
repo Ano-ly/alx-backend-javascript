@@ -1,20 +1,9 @@
-export default function getListStudents() {
-  const myArray = [
-    {
-      id: 1,
-      firstName: 'Guillaume',
-      location: 'San Francisco',
-    },
-    {
-      id: 2,
-      firstName: 'James',
-      location: 'Columbia',
-    },
-    {
-      id: 5,
-      firstName: 'Serena',
-      location: 'San Francisco',
-    },
-  ];
-  return myArray;
+export default function groceriesList() {
+  const newObj = new Map();
+  newObj.set('Apples', 10);
+  newObj.set('Tomatoes', 10);
+  newObj.set('Pasta', 1);
+  newObj.set('Rice', 1);
+  newObj.set('Banana', 5);
+  return newObj;
 }
