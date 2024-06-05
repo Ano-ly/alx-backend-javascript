@@ -1,20 +1,10 @@
-export default function getListStudents() {
-  const myArray = [
-    {
-      id: 1,
-      firstName: 'Guillaume',
-      location: 'San Francisco',
-    },
-    {
-      id: 2,
-      firstName: 'James',
-      location: 'Columbia',
-    },
-    {
-      id: 5,
-      firstName: 'Serena',
-      location: 'San Francisco',
-    },
-  ];
-  return myArray;
+export default function createInt8TypedArray(length, position, value) {
+  const newBuffer = new ArrayBuffer(length);
+  const newView = new DataView(newBuffer);
+  try {
+    newView.setInt8(position, value);
+    return newView;
+  } catch (error) {
+    throw new Error('Position outside range');
+  }
 }
