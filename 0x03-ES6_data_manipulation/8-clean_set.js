@@ -10,10 +10,7 @@ export default function cleanSet(set, startString) {
   const newArray = [];
 
   for (const myStr of set) {
-    if (typeof myStr === 'undefined') {
-      continue;
-    }
-    if (myStr.startsWith(startString) && myStr.length > strLen) {
+    if (typeof myStr !== 'undefined' && myStr.startsWith(startString) && myStr.length > strLen) {
       newArray.push(myStr.substring(strLen));
     }
   }
