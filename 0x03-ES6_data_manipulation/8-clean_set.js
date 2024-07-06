@@ -5,8 +5,10 @@ export default function cleanSet(set, startString) {
   if (startString.length === 0) {
     return '';
   }
+
   const strLen = startString.length;
   const newArray = [];
+
   for (const myStr of set) {
     if (typeof myStr === 'undefined') {
       continue;
@@ -15,5 +17,6 @@ export default function cleanSet(set, startString) {
       newArray.push(myStr.substring(strLen));
     }
   }
+
   return newArray.join('-');
 }
