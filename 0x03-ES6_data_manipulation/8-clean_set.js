@@ -1,20 +1,13 @@
-export default function getListStudents() {
-  const myArray = [
-    {
-      id: 1,
-      firstName: 'Guillaume',
-      location: 'San Francisco',
-    },
-    {
-      id: 2,
-      firstName: 'James',
-      location: 'Columbia',
-    },
-    {
-      id: 5,
-      firstName: 'Serena',
-      location: 'San Francisco',
-    },
-  ];
-  return myArray;
+export default function cleanSet(set, startString) {
+  if (startString.length === 0) {
+    return '';
+  }
+  const strLen = startString.length;
+  const newArray = [];
+  for (const myStr of set) {
+    if (myStr.startsWith(startString) && myStr.length > strLen) {
+      newArray.push(myStr.substring(strLen));
+    }
+  }
+  return newArray.join('-');
 }
