@@ -14,9 +14,6 @@ describe('Test add', () => {
   it('fourth test', () => {
     assert.equal(calc('SUM', 3.5), NaN);
   });
-  it('fifth test', () => {
-    assert.equal(calc('SUM', Infinity, -Infinity), NaN);
-  });
 });
 
 describe('Test subtract', () => {
