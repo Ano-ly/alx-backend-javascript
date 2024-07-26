@@ -23,4 +23,25 @@ describe('calculateNumber', () => {
   it('seventh test', () => {
     assert.equal(calc(Infinity, Infinity), Infinity);
   });
+  it('eighth test', () => {
+    assert.equal(calc(1e10 + 0.4, 0.6), 10000000001);
+  });
+  it('ninth test', () => {
+    assert.equal(calc(-1e10 + 0.4, 0.6), -9999999999);
+  });
+  it('tenth test', () => {
+    assert.equal(calc(1.4999999, 2.5000001), 4);
+  });
+  it('eleventh test', () => {
+    assert.equal(calc(-2.3, 3.7), 2);
+  });
+  it('twelfth test', () => {
+    assert.equal(calc(2.5, 3.5), 7);
+  });
+  it('thirteenth test', () => {
+    assert.equal(calc(1e10 + 0.4, 1e10 + 0.6), 20000000001);
+  });
+  it('thirteenth test', () => {
+    assert.equal(calc(1, 2), 3);
+  });
 });
