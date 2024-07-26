@@ -14,4 +14,13 @@ describe('calculateNumber', () => {
   it('fourth test', () => {
     assert.equal(calc(3.5), NaN);
   });
+  it('fifth test', () => {
+    assert.equal(calc(Infinity, -Infinity), NaN);
+  });
+  it('sixth test', () => {
+    assert.equal(calc(Infinity, NaN), NaN);
+  });
+  it('seventh test', () => {
+    assert.equal(calc(Infinity, Infinity), Infinity);
+  });
 });
