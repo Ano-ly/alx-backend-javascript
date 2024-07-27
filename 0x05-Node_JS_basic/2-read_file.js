@@ -16,7 +16,7 @@ function findField(el) {
 
 function countStudents(myPath) {
   try {
-    theStr = fs.readFileSync(myPath, { encoding: 'utf-8' })   
+    const theStr = fs.readFileSync(myPath, { encoding: 'utf-8' });
     const str = theStr.trim();
     const array = str.split('\n');
     const cols = array[0].split(',');
@@ -51,4 +51,3 @@ function countStudents(myPath) {
 }
 
 module.exports = countStudents;
-
