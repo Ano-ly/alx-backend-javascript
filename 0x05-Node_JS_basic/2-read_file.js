@@ -4,7 +4,7 @@ function findName(el) {
   if (el === 'firstname') {
     return true;
   }
-    return false;
+  return false;
 }
 
 function findField(el) {
@@ -21,7 +21,7 @@ function countStudents(myPath) {
     } else {
       const str = mystr.trim();
       const array = str.split('\n');
-      const cols = array[0].split(',')
+      const cols = array[0].split(',');
       const myArray = array.slice(1);
       const nameIdx = cols.findIndex(findName);
       const fieldIdx = cols.findIndex(findField);
@@ -41,7 +41,7 @@ function countStudents(myPath) {
           const infoList = item.split(',');
           if (major === infoList[fieldIdx]) {
             names.push(infoList[nameIdx]);
-            noStuds = noStuds + 1;
+            noStuds += 1;
           }
         }
         const studs = names.join(', ');
