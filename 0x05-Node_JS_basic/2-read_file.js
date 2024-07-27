@@ -1,5 +1,19 @@
 const fs = require('fs');
 
+function findName(el) {
+  if (el === 'firstname') {
+    return true;
+  }
+    return false;
+}
+
+function findField(el) {
+  if (el === 'field') {
+    return true;
+  }
+  return false;
+}
+
 function countStudents(myPath) {
   fs.readFile(myPath, { encoding: 'utf-8' }, (err, mystr) => {
     if (err) {
@@ -9,28 +23,16 @@ function countStudents(myPath) {
       const array = str.split('\n');
       const cols = array[0].split(',')
       const myArray = array.slice(1);
-      function findName(el) {
-        if (el === 'firstname') {
-          return true;
-        }
-        return false;
-      }
-      function findField(el) {
-        if (el === 'field') {
-          return true;
-        }
-        return false;
-      }
-      nameIdx = cols.findIndex(findName);
-      fieldIdx = cols.findIndex(findField);
+      const nameIdx = cols.findIndex(findName);
+      const fieldIdx = cols.findIndex(findField);
       const lenStuds = myArray.length;
-      console.log(`Number of students: ${lenStuds}`);
 
       const listMajor = new Set();
       for (const myItem of myArray) {
         const params = myItem.split(',');
         listMajor.add(params[fieldIdx]);
       }
+      console.log(`Number of students: ${lenStuds}`);
 
       for (const major of listMajor) {
         let noStuds = 0;
@@ -39,7 +41,7 @@ function countStudents(myPath) {
           const infoList = item.split(',');
           if (major === infoList[fieldIdx]) {
             names.push(infoList[nameIdx]);
-            noStuds++;
+            noStuds = noStuds + 1;
           }
         }
         const studs = names.join(', ');
