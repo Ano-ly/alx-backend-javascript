@@ -73,10 +73,13 @@ const app = http.createServer((req, res) => {
   } else if (myurl === '/students') {
     countStudents(file)
       .then((str) => {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
         res.end(str);
       })
       .catch((err) => {
         res.statusCode = 500;
+        res.setHeader('Content-Type', 'text/plain');
         res.end(err.message);
       });
   }
