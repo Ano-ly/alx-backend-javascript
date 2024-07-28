@@ -55,8 +55,8 @@ function countStudents(myPath) {
           }
           const studs = names.join(', ');
           fieldsInfo.push(`Number of students in ${major}: ${noStuds}. List: ${studs}`);
-          const fieldsStr = fieldsInfo.join('\n');
         }
+        const fieldsStr = fieldsInfo.join('\n');
         resolve(`${intro}\n${fieldsStr}`);
       }
     });
