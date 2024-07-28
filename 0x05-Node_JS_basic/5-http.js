@@ -4,9 +4,8 @@ const url = require('url');
 
 const port = 1245;
 
-args = process.argv;
-file = args[2];
-
+const args = process.argv;
+const file = args[2];
 
 function findName(el) {
   if (el === 'firstname') {
@@ -24,7 +23,7 @@ function findField(el) {
 
 function countStudents(myPath) {
   const myPromise = new Promise((resolve, reject) => {
-    const fieldsInfo = []
+    const fieldsInfo = [];
     fs.readFile(myPath, { encoding: 'utf-8' }, (err, theStr) => {
       if (err) {
         reject(new Error('Cannot load the database\n'));
@@ -42,7 +41,7 @@ function countStudents(myPath) {
           const params = myItem.split(',');
           listMajor.add(params[fieldIdx]);
         }
-        intro = `Number of students: ${lenStuds}`;
+        const intro = `Number of students: ${lenStuds}`;
 
         for (const major of listMajor) {
           let noStuds = 0;
@@ -58,7 +57,7 @@ function countStudents(myPath) {
           fieldsInfo.push(`Number of students in ${major}: ${noStuds}. List: ${studs}`);
           const fieldsStr = fieldsInfo.join('\n');
         }
-        resolve(`${intro}\n${fieldsInfo.join('\n')}`);
+        resolve(`${intro}\n${fieldsStr}`);
       }
     });
   });
@@ -68,19 +67,18 @@ function countStudents(myPath) {
 const app = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  myurl = url.parse(req.url).pathname;
+  const myurl = url.parse(req.url).pathname;
   if (myurl === '/') {
     res.end('Hello Holberton School!');
-  } else if ( myurl === '/students') {
+  } else if (myurl === '/students') {
     countStudents(file)
       .then((str) => {
         res.end(str);
       })
       .catch((err) => {
-        res.end(err);
-      })
-  } else {
-    res.end('Noe');
+        res.statusCode = 500;
+        res.end(err.message);
+      });
   }
 });
 
